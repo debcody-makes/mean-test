@@ -1,0 +1,23 @@
+
+<h2>Milestone Tracker</h2>
+
+<form [formGroup]="milestoneForm">
+  <p>
+    <label>Milestone Name:</label><br>
+    <input type="text" formControlName="milestoneName">
+  </p>
+
+  <p>
+    <label>Due Date:</label><br>
+    <input type="date" formControlName="dueDate">
+  </p>
+
+  <p>
+    <label>Status:</label><br>
+    <select formControlName="status">
+      <option value="Not Started">Not Started</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Completed">Completed</option>
+    </select>
+  </p>
+</form>
