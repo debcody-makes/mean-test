@@ -2,6 +2,22 @@
 <h2>Progress Notes</h2>
 
 <form [formGroup]="progressNotesForm">
+
+  <p>
+    <label for="projectCode">Project Code:</label><br>
+    <input
+      id="projectCode"
+      type="text"
+      formControlName="projectCode"
+      (blur)="onProjectCodeBlur()">
+  </p>
+
+  @if (errorMessage) {
+    <p style="color: red;" role="alert">
+      {{ errorMessage }}
+    </p>
+  }
+
   <p>
     <label>Project Name:</label><br>
     <input type="text" formControlName="projectName">
@@ -31,5 +47,5 @@
     <textarea formControlName="progressNote"
               rows="4" cols="45"></textarea>
   </p>
-</form>
 
+</form>
