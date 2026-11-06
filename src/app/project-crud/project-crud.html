@@ -1,0 +1,94 @@
+
+<h2>Project Records Management</h2>
+
+<p>Create, view, update, and delete projects stored in MongoDB.</p>
+
+<hr>
+
+<h3>{{ editingId ? 'Edit Project' : 'Add New Project' }}</h3>
+
+@if (message) {
+  <p style="color: green;">{{ message }}</p>
+}
+
+@if (errorMessage) {
+  <p style="color: red;">{{ errorMessage }}</p>
+}
+
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+  <label for="projectName">Project Name:</label>
+  <input id="projectName" type="text" formControlName="projectName">
+
+  <label for="description">Description:</label>
+  <textarea id="description" formControlName="description"></textarea>
+
+  <label for="startDate">Start Date:</label>
+  <input id="startDate" type="date" formControlName="startDate">
+
+  <label for="status">Status:</label>
+  <select id="status" formControlName="status">
+    <option value="Not Started">Not Started</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+  </select>
+
+  <label for="teamMember">Team Member:</label>
+  <input id="teamMember" type="text" formControlName="teamMember">
+
+  <label for="progressNote">Progress Note:</label>
+  <textarea id="progressNote" formControlName="progressNote"></textarea>
+
+  <div>
+    <button type="submit" [disabled]="projectForm.invalid">
+      {{ editingId ? 'Update Project' : 'Save Project' }}
+    </button>
+
+    <button type="button" (click)="resetForm()">
+      Clear Form
+    </button>
+  </div>
+
+</form>
+
+<hr>
+
+<h3>Saved Projects</h3>
+
+<button type="button" (click)="loadProjects()">
+  Refresh Projects
+</button>
+
+@for (project of projects; track project._id) {
+  <div class="project-card">
+    <h4>{{ project.projectName }}</h4>
+    <p>Status: {{ project.status }}</p>
+    <p>Team Member: {{ project.teamMember }}</p>
+
+    <button type="button" (click)="viewProject(project._id)">
+      View Details
+    </button>
+
+    <button type="button" (click)="editProject(project)">
+      Edit
+    </button>
+
+    <button type="button" (click)="deleteProject(project._id)">
+      Delete
+    </button>
+  </div>
+} @empty {
+  <p>No projects found.</p>
+}
+
+@if (selectedProject) {
+  <hr>
+  <h3>Project Details</h3>
+
+  <p><strong>Name:</strong> {{ selectedProject.projectName }}</p>
+  <p><strong>Description:</strong> {{ selectedProject.description }}</p>
+  <p><strong>Start Date:</strong> {{ selectedProject.startDate }}</p>
+  <p><strong>Status:</strong> {{ selectedProject.status }}</p>
+  <p><strong>Team Member:</strong> {{ selectedProject.teamMember }}</p>
+  <p><strong>Progress Note:</strong> {{ selectedProject.progressNote }}</p>
+}

@@ -1,0 +1,67 @@
+
+:host {
+  display: block;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+}
+
+h2, h3 {
+  color: #263b59;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 550px;
+}
+
+label {
+  font-weight: 600;
+}
+
+input, textarea, select {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 65px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 5px 8px 5px 0;
+  border: none;
+  border-radius: 6px;
+  background-color: #315b91;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #24456f;
+}
+
+button:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+.project-card {
+  padding: 16px;
+  margin: 14px 0;
+  border: 1px solid #d5dce5;
+  border-radius: 8px;
+  background-color: #f8fafc;
+}
+
+hr {
+  margin: 25px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
